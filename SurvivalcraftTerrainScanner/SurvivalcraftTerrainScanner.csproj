@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <LangVersion>preview</LangVersion>
+    <Nullable>disable</Nullable>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="SurvivalcraftAPI.Survivalcraft" Version="1.8.2.1" />
+    <PackageReference Include="Spectre.Console" Version="0.54.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Content.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnsiConsoleLogSink.cs" />
+    <Compile Include="AnsiConsoleScanMultipleVirtualWorldsStatusReporter.cs" />
+    <Compile Include="AnsiConsoleStatusReporter.cs" />
+    <Compile Include="GameManager.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="GameInitializer.cs" />
+    <Compile Include="AnsiConsoleProgressBarReporter.cs" />
+    <Compile Include="StringExtensions.cs" />
+    <Compile Include="Subsystems\SubsystemBottomSuckerBlockBehavior.cs" />
+    <Compile Include="Subsystems\SubsystemGameInfo.cs" />
+    <Compile Include="Subsystems\SubsystemTerrain.cs" />
+    <Compile Include="SurvivalcraftModEntity.cs" />
+    <Compile Include="TerrainScanner.cs" />
+    <Compile Include="TerrainUpdater.cs" />
+    <Compile Include="Worker.cs" />
+  </ItemGroup>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <ZipDirectory SourceDirectory="Content" DestinationFile="Content.zip" Overwrite="true" />
+  </Target>
+</Project>

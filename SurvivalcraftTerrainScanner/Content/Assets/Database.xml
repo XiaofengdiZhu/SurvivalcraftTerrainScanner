@@ -1,0 +1,467 @@
+﻿<Database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Database.xsd">
+  <DatabaseObjectTypes>
+    <DatabaseObjectType Name="Root" DefaultInstanceName="Root" IconName="" Order="0" SupportsValue="False" MustInherit="False" NameLengthLimit="256" SaveStandalone="False" AllowedNestingParents="" AllowedInheritanceParents="" NestedValueType="" />
+    <DatabaseObjectType Name="Folder" DefaultInstanceName="Folder" IconName="Folder" Order="1" SupportsValue="False" MustInherit="False" NameLengthLimit="256" SaveStandalone="False" AllowedNestingParents="Root,Folder" AllowedInheritanceParents="" NestedValueType="" />
+    <DatabaseObjectType Name="ProjectTemplate" DefaultInstanceName="Project" IconName="ProjectTemplate" Order="2" SupportsValue="False" MustInherit="False" NameLengthLimit="256" SaveStandalone="False" AllowedNestingParents="Root,Folder" AllowedInheritanceParents="ProjectTemplate" NestedValueType="Parameter" />
+    <DatabaseObjectType Name="MemberSubsystemTemplate" DefaultInstanceName="MemberSubsystem" IconName="MemberSubsystemTemplate" Order="3" SupportsValue="False" MustInherit="True" NameLengthLimit="256" SaveStandalone="False" AllowedNestingParents="ProjectTemplate" AllowedInheritanceParents="SubsystemTemplate" NestedValueType="Parameter" />
+    <DatabaseObjectType Name="SubsystemTemplate" DefaultInstanceName="Subsystem" IconName="SubsystemTemplate" Order="4" SupportsValue="False" MustInherit="False" NameLengthLimit="256" SaveStandalone="False" AllowedNestingParents="Root,Folder" AllowedInheritanceParents="SubsystemTemplate" NestedValueType="Parameter" />
+    <DatabaseObjectType Name="EntityTemplate" DefaultInstanceName="Entity" IconName="EntityTemplate" Order="5" SupportsValue="False" MustInherit="False" NameLengthLimit="256" SaveStandalone="False" AllowedNestingParents="Root,Folder" AllowedInheritanceParents="EntityTemplate" NestedValueType="Parameter" />
+    <DatabaseObjectType Name="ComponentTemplate" DefaultInstanceName="Component" IconName="ComponentTemplate" Order="6" SupportsValue="False" MustInherit="False" NameLengthLimit="256" SaveStandalone="False" AllowedNestingParents="Root,Folder" AllowedInheritanceParents="ComponentTemplate" NestedValueType="Parameter" />
+    <DatabaseObjectType Name="MemberComponentTemplate" DefaultInstanceName="MemberComponent" IconName="MemberComponentTemplate" Order="7" SupportsValue="False" MustInherit="True" NameLengthLimit="256" SaveStandalone="False" AllowedNestingParents="EntityTemplate" AllowedInheritanceParents="ComponentTemplate" NestedValueType="Parameter" />
+    <DatabaseObjectType Name="ParameterSet" DefaultInstanceName="ParameterSet" IconName="ParameterSet" Order="8" SupportsValue="False" MustInherit="False" NameLengthLimit="256" SaveStandalone="False" AllowedNestingParents="SubsystemTemplate,MemberSubsystemTemplate,EntityTemplate,ComponentTemplate,MemberComponentTemplate,ParameterSet" AllowedInheritanceParents="SubsystemTemplate,MemberComponentTemplate" NestedValueType="Parameter" />
+    <DatabaseObjectType Name="Parameter" DefaultInstanceName="Parameter" IconName="Parameter" Order="9" SupportsValue="True" MustInherit="False" NameLengthLimit="256" SaveStandalone="False" AllowedNestingParents="SubsystemTemplate,MemberSubsystemTemplate,EntityTemplate,ComponentTemplate,MemberComponentTemplate,ParameterSet" AllowedInheritanceParents="" NestedValueType="" />
+  </DatabaseObjectTypes>
+  <Assemblies>
+    <Assembly Name="Engine" />
+    <Assembly Name="Survivalcraft" />
+  </Assemblies>
+  <DatabaseObjects RootGuid="2c273f6a-efce-4bf1-a8ae-e3aea7ffb75c">
+    <Folder Name="Subsystems" Guid="75acb50b-fb75-4c85-af38-a0fb51a9eb90">
+      <Folder Name="BlockBehaviors" Guid="00c97f0f-731e-481c-9909-eae9cc5ee940">
+        <SubsystemTemplate Name="BlocksManager" Guid="0d8a840a-b29e-e22c-f884-33970a877afc" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="46dcfceb-86d7-b4d4-0fb8-8abbf3db0f06" Value="Game.SubsystemBlocksManager" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="UsedMods" Guid="3154ece6-9389-5059-21c7-aaac6a81b1a0" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="61231118-2d97-acb0-ed01-622ecd8cb257" Value="Game.SubsystemUsedMods" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="ButtonBlockBehavior" Guid="0302cf98-4263-466a-8d01-985fa3d9b002" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="4407e30b-89ee-40c7-b1d2-eb100c2b8ac4" Value="Game.SubsystemButtonBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="SignBlockBehavior" Guid="039ea51e-c41d-4c93-99ae-a9b5a491c7aa" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <ParameterSet Name="Texts" Description="Contains sign texts" Guid="bdafca01-cf4e-414d-854e-aaaa8a138d0e" />
+          <Parameter Name="Dependencies" Guid="17fb151b-01dd-9391-a789-85d1db5dbdc3" Value="MovingBlocks" Type="string" />
+          <Parameter Name="Class" Guid="e62ca7a9-a354-48ee-a504-e7d112d859b9" Value="Game.SubsystemSignBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="EntityBlockBehavior" Guid="3adb82ac-b42c-485d-b393-4b017aba88d0" InheritanceParent="f84d81fb-ee41-4908-b935-abce190ed017">
+          <Parameter Name="Class" Guid="706b9f2b-9721-89a1-105c-844d067c1030" Value="Game.SubsystemEntityBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="FertilizerBlockBehavior" Guid="05b0eac6-51df-4e52-b9e7-4495020a1b66" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="f517920e-528f-4fae-9ae7-370e448d4c7d" Value="Game.SubsystemFertilizerBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="TruthTableCircuitBlockBehavior" Guid="0758eaf6-7242-44c6-958c-5d35471b0ac8" InheritanceParent="aea46453-65b5-463a-9e0b-45f80bc41285">
+          <Parameter Name="Class" Guid="a66d56a3-a8e1-4407-9a77-05ecdcb9766b" Value="Game.SubsystemTruthTableCircuitBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="FallenLeavesBlockBehavior" Guid="0a4bc5f7-5c06-4f21-97ff-2a825bcb4f2d" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="acb9643b-ea94-490e-b69c-2d3d376987a9" Value="Game.SubsystemFallenLeavesBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="TorchBlockBehavior" Guid="1815d2e9-776d-40e3-abde-c46d1cc8b301" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="5fb21b86-aa45-4991-97cf-0f78ce5ccde3" Value="Game.SubsystemTorchBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="FireBlockBehavior" Guid="1889526b-eecc-47f7-856b-e5a324ecbf9e" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="049e50e8-f0f4-4ae9-990f-965fe77b625c" Value="Game.SubsystemFireBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="LedBlockBehavior" Guid="193767bc-77c2-4fcc-a604-7e8189823954" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="fa75afff-d548-4432-89a6-c3d225f0bc77" Value="Game.SubsystemLedBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="LadderBlockBehavior" Guid="1b7c2a2b-867b-4a4e-823d-752df647bf29" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="677d9c73-b3ff-4185-b4a6-4ca22cae8d84" Value="Game.SubsystemLadderBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="DeciduousLeavesBlockBehavior" Guid="2090a18e-9015-4102-b5c5-df077eb6953e" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="ea363abf-49f7-4106-a487-1726304f8214" Value="Game.SubsystemDeciduousLeavesBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="MatchBlockBehavior" Guid="2b55476c-d33b-4012-89f8-dae22283ca67" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="ec13fb0e-6ef8-405c-8501-3fd127bbbfdb" Value="Game.SubsystemMatchBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="PlantBlockBehavior" Guid="32d1d42c-cb28-446a-9401-3ee0abedc296" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="1c95cd40-26be-44cf-938a-157b318ff086" Value="Game.SubsystemPlantBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="RakeBlockBehavior" Guid="349f7e10-7478-4ae9-ae17-278866421f39" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="3c24a026-0ee6-4aca-b4fe-3a926f6e23f0" Value="Game.SubsystemRakeBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="SaplingBlockBehavior" Guid="3830d91c-64fd-4048-ac76-efe4b0e26315" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <ParameterSet Name="Saplings" Description="Contains saplings data" Guid="6743c56e-9e37-411d-ba9b-ad9bf5631201" />
+          <Parameter Name="Class" Guid="6dfdc7f1-530b-4f6d-a7f3-1691f021533d" Value="Game.SubsystemSaplingBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="CactusBlockBehavior" Guid="3858a400-2708-4e12-bccf-0495889fff79" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="765c87c0-ea8a-4513-9cbd-5cf89c72e2a9" Value="Game.SubsystemCactusBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="WoodBlockBehavior" Guid="41970dce-2f87-4633-ac0a-1ee6a0d6c49e" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="LeavesToCheck" Description="List of leaves positions to be checked for decay" Guid="628ddd80-5d43-4944-9286-3117feb6cf91" Value="" Type="string" />
+          <Parameter Name="Class" Guid="814c0311-066e-4a75-8c99-0cc0804ace19" Value="Game.SubsystemWoodBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="TrapdoorBlockBehavior" Guid="441ffae0-b085-474c-b309-db17d5cac6b6" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="2576fcde-13ea-4fdf-a617-196239a22bfe" Value="Game.SubsystemTrapdoorBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="RotBlockBehavior" Guid="4966d04e-9351-4766-9ee0-c31948e6d9dc" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="LastRotTime" Guid="0959aab0-1bdd-4296-88c9-4f14bd31d0ec" Value="0" Type="double" />
+          <Parameter Name="RotStep" Guid="3cd99a0a-2b2a-4998-b8ce-422b98963218" Value="0" Type="int" />
+          <Parameter Name="Dependencies" Guid="62eab98b-caa2-426e-8884-f9959d6c39a8" Value="GameInfo" Type="string" />
+          <Parameter Name="Class" Guid="794afcc5-7af7-43ee-92c9-a6ba54084068" Value="Game.SubsystemRotBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="BatteryBlockBehavior" Guid="499ccd8e-0113-4f47-ada1-0e976cad1221" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="1c05e732-2ea1-4db4-b37a-0cd1ac6d7d73" Value="Game.SubsystemBatteryBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="MagmaBlockBehavior" Guid="4ba68871-9bf0-450a-915a-2cebc57e9961" InheritanceParent="f84d81fb-ee41-4908-b935-abce190ed017">
+          <Parameter Name="Class" Guid="828db45d-1460-434d-8879-ccd0d3810518" Value="Game.SubsystemMagmaBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="GravestoneBlockBehavior" Guid="4d1886bf-8d73-4f73-8f25-3187c066c9d3" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="7a521525-26d1-4f93-b769-e5b582f8677c" Value="Game.SubsystemGravestoneBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="ElectricBlockBehavior" Guid="4eeb6084-e0bd-481d-a69d-a598a6ea2123" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="c8bfc36e-5f49-43e8-bf1e-b64270ecf9fd" Value="Game.SubsystemElectricBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="SoilBlockBehavior" Guid="59d44a4c-bc6a-499f-944e-39390092696e" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="9ef8d250-edd0-4fe5-8979-49f7dd023cdb" Value="Game.SubsystemSoilBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="SnowBlockBehavior" Guid="69bdfe15-ad49-4073-810b-793728897b50" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="104e3914-7858-4e4d-ba21-583cf299416d" Value="Game.SubsystemSnowBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="CampfireBlockBehavior" Guid="6bc87ada-d6f8-427b-b8f1-1a42b82f1752" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="4803e988-79fb-4a29-90cb-979084dbf63b" Value="Game.SubsystemCampfireBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="MusketBlockBehavior" Guid="6bf6bba0-4ac1-44a9-9e83-b4c659038fc8" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="f1d1ccfa-29ad-42ed-ad2e-ae59da4dbd62" Value="Game.SubsystemMusketBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="GrassBlockBehavior" Guid="6cca26bc-e617-4521-903d-173e2d8a5d16" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="e167fcdc-6960-4487-ace1-6a56eecae003" Value="Game.SubsystemGrassBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="GrassTrapBlockBehavior" Guid="6cf6f046-36ca-4a67-a026-d73bc6b1a464" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="9cc7d810-e61d-426e-9248-8c6f00d354c0" Value="Game.SubsystemGrassTrapBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="FurnitureBlockBehavior" Guid="74a7c18a-eb7d-478a-81b5-9113dc2925fd" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <ParameterSet Name="FurnitureSets" Description="Contains information about furniture sets" Guid="5b8ffc52-a3f7-442f-b840-5119ad591acc" />
+          <ParameterSet Name="FurnitureDesigns" Description="Contains information about furniture designs" Guid="ea42db38-dfae-4a98-9483-81488486d65d" />
+          <Parameter Name="Class" Guid="777e2621-fbdf-4fb1-b883-541aa9de6c54" Value="Game.SubsystemFurnitureBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="IvyBlockBehavior" Guid="7aba3213-a92d-46ca-8665-5fe3036314fe" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="b48add77-ab7d-4073-b22a-03a6fe73f584" Value="Game.SubsystemIvyBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="BottomSuckerBlockBehavior" Guid="7f3ab790-e878-4c17-a092-63e5eda27c7b" InheritanceParent="d2791711-8246-4aa7-992e-66dd36a14d42">
+          <Parameter Name="Class" Guid="d62ff6ce-b5d3-40ee-ae56-77b33f236a62" Value="SurvivalcraftTerrainScanner.SubsystemBottomSuckerBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="BucketBlockBehavior" Guid="82ca76a7-5488-491d-9acc-077bd2c3a056" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="cfe5aab1-2899-4995-a722-4a24000392a1" Value="Game.SubsystemBucketBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="TreasureGeneratorBlockBehavior" Guid="84edaa11-d20d-4bbd-b57e-c805e43e6f9b" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="e364832c-d780-4481-bbd2-0ed347d9c477" Value="Game.SubsystemTreasureGeneratorBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="SpikesBlockBehavior" Guid="85671085-6307-4836-b6d8-b307b25c1449" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="03981da6-cd7b-4e92-bb97-49e98a4ddcca" Value="Game.SubsystemSpikesBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="MetersBlockBehavior" Guid="85bef796-4594-4476-bf21-02eca977f35f" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="1efae454-fb77-4262-a9f3-3b685d773ba0" Value="Game.SubsystemMetersBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="SwitchBlockBehavior" Guid="8717b547-e3eb-4465-946a-e4fb0b2fedb4" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="4e3b2bf3-e8b9-4317-b52a-26ce3070d2e3" Value="Game.SubsystemSwitchBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="ChestBlockBehavior" Guid="8723c7b1-fe0c-4003-b41b-db3f4d46ac03" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="fffc87b1-8fdf-4b13-8c37-9590cbb19928" Value="Game.SubsystemChestBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="CrossbowBlockBehavior" Guid="9b12f4a8-683b-42ac-a2c8-d3387bb453f2" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="a9435113-6670-4d7f-ba91-c60589a18595" Value="Game.SubsystemCrossbowBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="PistonBlockBehavior" Guid="9bbd943a-f452-42a1-b96a-7457d06ff34c" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="937999c9-9570-4cbd-8390-23f1e4609cdd" Value="Game.SubsystemPistonBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="WaterPlantBlockBehavior" Guid="9db49874-ea24-4b74-a7be-a20800460065" InheritanceParent="d2791711-8246-4aa7-992e-66dd36a14d42">
+          <Parameter Name="Class" Guid="4ce7b788-02e8-4b85-a2ad-64f18855c9d7" Value="Game.SubsystemWaterPlantBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="MemoryBankBlockBehavior" Guid="afa0f291-980f-4f6e-b700-89cd387a6873" InheritanceParent="aea46453-65b5-463a-9e0b-45f80bc41285">
+          <Parameter Name="Class" Guid="32a2d9ef-b01a-4f80-a6f8-5d2d5e9e9275" Value="Game.SubsystemMemoryBankBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="FenceGateBlockBehavior" Guid="b5641f1c-7b30-4675-9891-40189f4ce801" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="45c00d1e-e0e5-47f3-b581-b2bf3dabae3e" Value="Game.SubsystemFenceGateBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="FenceBlockBehavior" Guid="b9a7f98e-b2fd-4902-9e37-d2c0a73909c4" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="2832011c-fa29-4d87-84a2-140ffde39452" Value="Game.SubsystemFenceBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="SaddleBlockBehavior" Guid="bbc85044-ea2e-400f-80c9-0ee35df9e3ee" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="d997674c-b8c0-4937-b94f-ef595a10612f" Value="Game.SubsystemSaddleBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="CraftingTableBlockBehavior" Guid="bbd566b7-ccd4-4a36-a137-38d19e65f09d" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="8430ee24-038c-417b-a2b7-32770d7f0875" Value="Game.SubsystemCraftingTableBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="BowBlockBehavior" Guid="bc4c17b6-cd36-43f4-b33e-50b4fba7a7fa" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="2199466f-d18c-406f-b210-e6b7a41b9b22" Value="Game.SubsystemBowBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="BulletBlockBehavior" Guid="bf9989ae-bc28-4b68-ab40-22582ef75e5d" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="dfb6e1e9-a70d-4dc2-b95c-cba662bfb7c8" Value="Game.SubsystemBulletBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="WhistleBlockBehavior" Guid="c07adbb0-3ad3-45d6-a91a-7bea44aabd96" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="87c04d2e-b460-4934-a59d-3b63261e16e4" Value="Game.SubsystemWhistleBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="FurnaceBlockBehavior" Guid="c07f0e62-402f-4b96-987a-6050eb7ed2d4" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="7618532b-5607-40f1-8704-4c42f35ec016" Value="Game.SubsystemFurnaceBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="ThrowableBlockBehavior" Guid="c8f7cc9d-ce57-46cc-ba8b-578bca6dd831" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="4ace79aa-2818-401a-abef-d05077fabc77" Value="Game.SubsystemThrowableBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="ArrowBlockBehavior" Guid="caa9e7c7-b031-458b-a834-c78efab295c7" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="d54744fc-4b2b-4086-a39b-4bba0678fcaa" Value="Game.SubsystemArrowBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="FireworksBlockBehavior" Guid="cbdc39d9-1144-47d3-aa6c-16c4f14bed32" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="0b869f02-ec67-4a19-8e59-9dca834c76b2" Value="Game.SubsystemFireworksBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="WaterBlockBehavior" Guid="cc7a6ce9-9395-42e3-bd56-c21261e96b59" InheritanceParent="f84d81fb-ee41-4908-b935-abce190ed017">
+          <Parameter Name="Class" Guid="4ecb005a-64f7-4036-b470-cc163fab65c2" Value="Game.SubsystemWaterBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="MagnetBlockBehavior" Guid="cd2693a0-a604-4e47-8ca4-ef9377ec1f6f" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Magnets" Description="List of magnet positions in the world" Guid="292653e2-854a-4805-ace9-e64bd00de984" Value="" Type="string" />
+          <Parameter Name="Class" Guid="7f281996-98af-4e8f-b3b5-7fdda8e62405" Value="Game.SubsystemMagnetBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="ExplosivesBlockBehavior" Guid="ced0bc07-bf58-4116-b4c6-19b1499c6ae7" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <ParameterSet Name="Explosives" Description="Contains active explosives" Guid="7216adbf-816d-4f5f-ba86-31a514547762" />
+          <Parameter Name="Class" Guid="11007544-dd02-4e82-8db4-b393689c8b1a" Value="Game.SubsystemExplosivesBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="InWaterBlockBehavior" Guid="d2791711-8246-4aa7-992e-66dd36a14d42" InheritanceParent="cc7a6ce9-9395-42e3-bd56-c21261e96b59">
+          <Parameter Name="Class" Guid="d44ebe56-16e8-4b93-a66f-27ab01634eb4" Value="Game.SubsystemInWaterBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="StairsBlockBehavior" Guid="d4b14f01-d52c-403a-8afa-e04c1a9b32be" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="f8241bb5-e5b5-498f-830c-e3cd264201e3" Value="Game.SubsystemStairsBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="AdjustableDelayGateBlockBehavior" Guid="e0211467-e017-4d2d-bd48-877a0fefe234" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="64552991-c904-476c-a0bb-3b2710e54433" Value="Game.SubsystemAdjustableDelayGateBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="ImpactExplosivesBlockBehavior" Guid="e1d4e2b6-3b31-4f67-9272-de4c00c89bcb" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="ce7d1d93-7073-44f0-9272-398001e4ad7e" Value="Game.SubsystemImpactExplosivesBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="DispenserBlockBehavior" Guid="e663c125-3b60-4dbc-8d70-ca2d7043161d" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="4c917896-d6dc-4e4d-b27f-f02deea0f241" Value="Game.SubsystemDispenserBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="BombBlockBehavior" Guid="e8d530fa-cb89-46e8-8722-43c539dde579" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="15c34441-6176-4712-bce3-8dc38e4dae0f" Value="Game.SubsystemBombBlockBehavior" Type="string" />
+          <Parameter Name="Dependencies" Guid="8636be65-5083-43cf-bff4-d53281070058" Value="Projectiles, BlockBehaviors" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="CarpetBlockBehavior" Guid="edaebc7e-2119-4440-89a0-ece7503b15d3" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="34a43ef6-f96b-4b4e-a8f1-18ea5907b3c7" Value="Game.SubsystemCarpetBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="EggBlockBehavior" Guid="efa35e1b-09b2-4e92-a61e-0ae7dfc5beb1" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="d5b482bc-1fd3-4774-84f6-0f7257deb2e5" Value="Game.SubsystemEggBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="DoorBlockBehavior" Guid="f17a4d1b-20a4-4332-9962-8888a8e245df" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="62e088f3-fe03-4352-bc0e-50430714379b" Value="Game.SubsystemDoorBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="CollapsingBlockBehavior" Guid="f47a3ccb-3c3d-443d-90fb-0eac53780343" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <ParameterSet Name="CollapsingBlocks" Description="Contains collapsing blocks data" Guid="7ac99186-cb37-426d-b775-11ea320d5b8a" />
+          <Parameter Name="Class" Guid="2fd5d0fb-7b5a-44bf-92d3-383b1f1b9032" Value="Game.SubsystemCollapsingBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="HammerBlockBehavior" Guid="f94892a5-b5b5-49b2-a242-8723d5873f0a" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="d447f324-eda9-47d4-8671-af13a1a858cd" Value="Game.SubsystemHammerBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="BoatBlockBehavior" Guid="ff038d3d-e999-452c-959d-47eefb16457a" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <Parameter Name="Class" Guid="f18571da-4268-41d7-90a9-9a066f2feea8" Value="Game.SubsystemBoatBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="ExperienceBlockBehavior" Guid="eb0f68d3-9790-b0d0-706f-cb0af24fabcd" InheritanceParent="f84d81fb-ee41-4908-b935-abce190ed017">
+          <Parameter Name="Class" Guid="0d9bad71-acf9-0f5a-1cd9-1ef4b4f274a7" Value="Game.SubsystemExperienceBlockBehavior" Type="string" />
+        </SubsystemTemplate>
+      </Folder>
+      <Folder Name="Gameplay" Guid="23dd4cdf-442b-4951-b4b1-1043fe4f444e">
+        <SubsystemTemplate Name="Names" Description="Allows searching of entities by name" Guid="1678591a-ffc1-4138-b2ee-d6729286d356" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="6c7bbb07-0e6c-4b08-9200-652985616bc6" Value="Game.SubsystemNames" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Palette" Description="Allows access to colors and names of world palette" Guid="1a7137b3-6528-4aa8-8b64-e3ad329bf7f9" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="2cc28e1a-8ee8-4373-b21f-42929bba1c37" Value="Game.SubsystemPalette" Type="string" />
+          <Parameter Name="Dependencies" Guid="3efcb2f8-31d0-4818-9772-06492753a27d" Value="GameInfo" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Players" Description="Spawns and respawns players, manages spawn positions" Guid="30b8559d-fc03-42cb-b716-e985aaac96c0" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <ParameterSet Name="Players" Description="Contains players data" Guid="dab7078b-7788-46cb-9022-1a95127e0ad7" />
+          <Parameter Name="Class" Guid="4a38c418-c0da-43e2-bef1-a599caa6bed6" Value="Game.SubsystemPlayers" Type="string" />
+          <Parameter Name="NextPlayerIndex" Description="Next player index to use when adding a new player" Guid="bf962f77-766c-4d0a-b153-9eb1535606d5" Value="1" Type="int" />
+          <Parameter Name="GlobalSpawnPosition" Description="Global spawn position for all players, or 0,0,0 if not set yet" Guid="f220b69c-8627-41b4-b251-24c8ef83c5f4" Value="0,0,0" Type="Vector3" />
+          <Parameter Name="Dependencies" Guid="fb87c7e2-8011-4272-bfa3-b464a0a23d14" Value="GameInfo, Terrain" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="CellChangeQueue" Description="Queues cell updates and applies them periodically to avoid continuous chunk updates" Guid="36751293-aade-4618-9412-762e1de60fe2" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="52623009-18a5-4fa4-9297-48a2600d07a1" Value="Game.SubsystemCellChangeQueue" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Pathfinding" Description="Finds paths through terrain" Guid="36854096-5b71-4530-a68d-a8f8ae5422af" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="897c7368-a123-483c-bb62-88743d3384d9" Value="Game.SubsystemPathfinding" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Pickables" Description="Manages pickables (items created when a block is harvested)" Guid="4eeab2d1-c84c-4fa5-a784-5706f5626bf2" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <ParameterSet Name="Pickables" Description="Contains pickables, each one in a separate parameter set" Guid="27fcf1b1-0153-4f93-8379-37c59dcfab12" />
+          <Parameter Name="Class" Guid="32d392de-69c1-4d04-9e0b-5c7463201892" Value="Game.SubsystemPickables" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="ItemsScanner" Description="Periodically scans all items in the entire world and fires an event with the list" Guid="5311584e-80e1-45f1-ab41-d204714643cb" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="0306bc40-bcb4-4067-8dfb-8dc907b766ed" Value="Game.SubsystemItemsScanner" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Spawn" Description="Automatically spawns and despawns entities around view position" Guid="6bae095b-8129-446e-8a8a-9e2184b442e0" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <ParameterSet Name="Chunks" Description="Contains data of entities which are despawned" Guid="909c09de-1976-4513-94bb-ce481d1128f4" />
+          <Parameter Name="Class" Guid="09091863-1852-4c05-ade0-d57fe04289e3" Value="Game.SubsystemSpawn" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Weather" Description="Manages rain and snow" Guid="7101ee51-9ab5-43cf-93ca-fca178d719cc" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="LightningIntensity" Description="Lightning intensity of current weather, 0 to 1" Guid="22035e67-3e26-4e2c-aa97-39fde222ab16" Value="0" Type="float" />
+          <Parameter Name="WeatherStartTime" Description="Time when weather will end" Guid="74e5495f-682d-4cbf-9303-445f08b76aa6" Value="0" Type="double" />
+          <Parameter Name="WeatherEndTime" Description="Time when weather started or will start" Guid="af82c1dd-09b6-4aed-abfa-57eb773de683" Value="0" Type="double" />
+          <Parameter Name="Class" Guid="b4f7e5b0-df22-47ea-a1eb-df191df54f2e" Value="Game.SubsystemWeather" Type="string" />
+          <Parameter Name="FogStartTime" Description="Time when fog will end" Guid="bbf02b89-dfe3-4c93-8058-05fa040e0ee9" Value="0" Type="double" />
+          <Parameter Name="FogEndTime" Description="Time when fog started or will start" Guid="d23c9d31-e2d6-44a2-828f-23e1cb85df7e" Value="0" Type="double" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Time" Description="Manages non-persistent game time" Guid="73bbc39a-6cf8-470b-b008-fb9aef611caa" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="54a4f6d5-98dd-4dc3-bf6d-04dfd972c6b7" Value="Game.SubsystemTime" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Update" Description="Calls Update() on IUpdateables" Guid="743dceeb-03d9-4d12-9c0a-3e9774a6afe6" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="16496c63-ab19-4dd4-91bd-7675ef472df5" Value="Game.SubsystemUpdate" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Noise" Description="Manages noise used by AI" Guid="93d8dc8f-a3cb-4825-a66a-d5ad3b9195dc" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="3bc60bf2-7a1f-42a7-8b7d-a74e1e6b0283" Value="Game.SubsystemNoise" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Terrain" Description="Handles terrain rendering, updating, serialization and collisions" Guid="99ba8fcf-22cd-4adc-97ab-cb7b326ec037" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Dependencies" Guid="3ed80da6-fba1-4840-b0e8-a8a7aa24e01e" Value="GameInfo" Type="string" />
+          <Parameter Name="Class" Guid="e2636c38-f179-4aa1-b087-ed6920d66e8e" Value="SurvivalcraftTerrainScanner.SubsystemTerrain" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="BlocksScanner" Description="Periodically scans all blocks in the terrain and invokes Poll function" Guid="a0a74e2a-ff7c-42a3-a393-9ab0d1c0a398" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="PollPass" Description="Index of terrain polling pass" Guid="3abe5979-b090-4a35-92a4-048885ab739f" Value="0" Type="int" />
+          <Parameter Name="Class" Guid="5864dcdb-4a59-419c-b33c-52f0de193aef" Value="Game.SubsystemBlocksScanner" Type="string" />
+          <Parameter Name="PollPoint" Description="Current chunk polling point" Guid="73a4f2c0-5fea-421d-a1fa-880e5a6f9f89" Value="0,0" Type="Point2" />
+          <Parameter Name="Dependencies" Guid="8e2147e2-6a84-45fe-a080-a957776e7c65" Value="BlockBehaviors" Type="string" />
+          <Parameter Name="PollChunkCoordinates" Description="Current polling chunk coordinates" Guid="91ce1768-41fa-4c15-8814-0648f3451f21" Value="0,0" Type="Point2" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="TimeOfDay" Description="Manages time of day" Guid="a41d6893-bc1b-4e4e-b097-c3aebf676d6f" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="1e884b27-fc1d-486a-bd0e-518e554b9734" Value="Game.SubsystemTimeOfDay" Type="string" />
+          <Parameter Name="TimeOfDayOffset" Description="Time of day offset, in days" Guid="291dad2b-078a-4510-aba8-e53e64439f80" Value="0" Type="double" />
+          <Parameter Name="Dependencies" Guid="62804e73-f886-4681-923c-ed4bb2fba0eb" Value="Seasons" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="GameInfo" Description="Holds game information, such as total elapsed time, seed and world name" Guid="af753bf7-a952-4222-8507-4289c3b7670b" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="TerrainGenerationMode" Description="Game mode of the world" Guid="1f272122-3918-49ab-96ed-6cb7df1588df" Value="Continent" Type="Game.TerrainGenerationMode" />
+          <Parameter Name="EnvironmentBehaviorMode" Description="Environment behavior mode of the world" Guid="3369f738-e249-4159-ac72-fd1bcf3b81ce" Value="Living" Type="Game.EnvironmentBehaviorMode" />
+          <Parameter Name="TimeOfDayMode" Description="Time of day mode of the world" Guid="4f952456-98f7-4a81-9848-2d39f37081dd" Value="Changing" Type="Game.TimeOfDayMode" />
+          <Parameter Name="Class" Guid="5d358a77-f64b-4972-81ee-6baa2d348109" Value="SurvivalcraftTerrainScanner.SubsystemGameInfo" Type="string" />
+          <Parameter Name="TerrainLevel" Description="Terrain generation level, in blocks" Guid="8973da65-a5ad-4703-8de7-d5395ac00201" Value="64" Type="int" />
+          <Parameter Name="TotalElapsedGameTime" Description="Total time spent in game, in seconds" Guid="b037487c-c521-4da4-b4a6-95c4dbd34e2c" Value="0" Type="double" />
+          <Parameter Name="WorldSeed" Description="Seed of the world" Guid="bd44aafa-752a-411d-baa4-9dbf61bd2e19" Value="0" Type="int" />
+          <Parameter Name="GameMode" Description="Game mode of the world" Guid="c39bc31c-7a39-4b76-8cf4-eb7cd412cf03" Value="Challenging" Type="Game.GameMode" />
+          <Parameter Name="AreWeatherEffectsEnabled" Description="Whether weather effects are enabled" Guid="d00250b7-d95a-4a2d-9cc2-bb4a4321b910" Value="True" Type="bool" />
+          <Parameter Name="WorldName" Description="Name of the world" Guid="d6c88d24-060f-45bf-af7b-f00c6466cec0" Value="" Type="string" />
+          <Parameter Name="WorldSeedString" Description="Seed string of the world" Guid="d8fc12d6-29e4-4583-841f-d3d423c469c4" Value="" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="CreatureSpawn" Description="Spawns creatures around view position" Guid="b3f8c7e3-ba45-4ba0-8bc6-ffb20e82b57e" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="d3764c71-e1e7-48b1-b12a-17428daad169" Value="Game.SubsystemCreatureSpawn" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="MovingBlocks" Description="Handles moving blocks" Guid="bb01254d-4991-4135-96f2-50ad9262a28e" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <ParameterSet Name="MovingBlockSets" Guid="f1b82bdb-c80f-4985-8ad4-e3ee1805bff3" />
+          <Parameter Name="Class" Guid="1739995d-79de-4d04-9763-432c22b3f416" Value="Game.SubsystemMovingBlocks" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Bodies" Description="Manages physical bodies and allows spatial queries and raycasts" Guid="c4d99daf-a6ef-4290-8f20-2908e4e6c35e" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="ee3b5830-8ad9-4512-9045-e145b1d859bd" Value="Game.SubsystemBodies" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Sky" Description="Renders sky and celestial objects" Guid="c5722262-a4f6-42de-afe7-ce272092f2d8" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Dependencies" Guid="1ec91ae3-5784-483f-b3d8-7ba3a61fca11" Value="TimeOfDay, Seasons" Type="string" />
+          <Parameter Name="Class" Guid="3c28d383-dc6e-4d55-8084-5d914abd4d79" Value="Game.SubsystemSky" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="PlayerStats" Description="Manages player statistics" Guid="c829cb1d-879e-47c4-8597-1507cdac7629" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <ParameterSet Name="Stats" Guid="a5ca06a7-6644-4f5f-9cb6-ec9d89a947e1" />
+          <Parameter Name="Class" Guid="93ecf94c-074c-4598-81eb-4dd9b0d1b2f1" Value="Game.SubsystemPlayerStats" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="BlockEntities" Description="Manages entities associated with terrain blocks" Guid="ccd8d745-1802-4dc7-80ed-8e01712fe611" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="eee3dcbd-2520-4868-ab8b-895491f05bdc" Value="Game.SubsystemBlockEntities" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Projectiles" Description="Manages projectiles" Guid="ce0db76f-3990-43be-b3ec-3a71bbe1d4e1" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <ParameterSet Name="Projectiles" Description="Contains projectiles, each one in a separate parameter set" Guid="d27d4103-cefd-4361-872d-d7760162f50d" />
+          <Parameter Name="Class" Guid="dafb8e14-11b9-44b7-a208-424b770aeaa9" Value="Game.SubsystemProjectiles" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Electricity" Description="Manages electric elements and wires" Guid="dbcd53c2-b8b7-44a4-ad54-5e4859ca8c27" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="VoltagesByCell" Description="A list of electric elements voltages, by cell. Semicolon separated." Guid="3134e9c7-aa53-4598-b631-21c182d2a832" Value="" Type="string" />
+          <Parameter Name="Class" Guid="8b87d997-935b-45ee-8997-0c59c141c83e" Value="Game.SubsystemElectricity" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Seasons" Description="Manages seasons" Guid="ea787ac6-0207-4bbf-af0f-3e81a30d58c1" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="bda673cd-8ab3-45a6-90b0-b540a0f5c4d5" Value="Game.SubsystemSeasons" Type="string" />
+          <Parameter Name="Dependencies" Guid="ed544d03-1b4d-437a-9ac9-e5a734f51cdb" Value="GameInfo" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="BlockBehaviors" Description="Plays audio and manages audio congestion" Guid="ebfc88a1-2c29-441a-8a08-72f44daf0604" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="4b656a0c-515b-4e6e-91ec-e3d07c2351f9" Value="Game.SubsystemBlockBehaviors" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Explosions" Description="Plays audio and manages audio congestion" Guid="f2149216-75c1-4a5d-b385-0038d60ba9fe" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="96e79f99-a082-4190-9ab6-835dc49ebbdd" Value="Game.SubsystemExplosions" Type="string" />
+        </SubsystemTemplate>
+      </Folder>
+      <Folder Name="Rendering" Guid="739164ab-9212-4610-aa8e-133159750b89">
+        <SubsystemTemplate Name="AnimatedTextures" Description="Renders animated textures" Guid="23271fad-714e-49b7-a01d-9301a9e4588b" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="ee70e68e-4884-45f7-b8b5-a3a46756e195" Value="Game.SubsystemAnimatedTextures" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Glow" Description="Renders shadows of objects" Guid="2871b57d-58c2-4c7d-80fd-ddce2b50a03b" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="3009b6f8-7012-4a04-89cf-6b43ced8ecf7" Value="Game.SubsystemGlow" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="GameWidgets" Description="Manages GameViewWidget and cameras" Guid="2e35e78b-680f-4eba-b8a4-fe7c186ae969" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="6bf14dc6-32e7-4e8c-b3c4-438e0eee13ad" Value="Game.SubsystemGameWidgets" Type="string" />
+          <Parameter Name="Dependencies" Guid="a9c5f123-1ed0-4728-988b-c6327089a13c" Value="Players" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="ModelsRenderer" Description="Renders all ComponentModels in project" Guid="500c38fb-fb7f-4074-9cc7-9a4a0a79ef09" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="83c48cb5-353c-4e6b-876f-f5f41f9afe50" Value="Game.SubsystemModelsRenderer" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Postprocessor" Description="Applies postprocessing effects" Guid="7da47c66-2c8d-4b54-90ac-c270b42c333f" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Postprocessor" Description="Name of postprocessor to use, or empty string if none" Guid="e18c7827-d10f-440b-b1ea-8db9ade5ec4b" Value="" Type="string" />
+          <Parameter Name="Class" Guid="ede66f8b-995b-4158-b20d-17c7b4010f2b" Value="Game.SubsystemPostprocessor" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="BlocksTexture" Description="Manages blocks texture" Guid="959b7b8c-35b6-47c7-ab04-7bc6469cddad" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Dependencies" Guid="69148618-1aca-4f9d-8639-d960139a7f2f" Value="GameInfo" Type="string" />
+          <Parameter Name="Class" Guid="cabc985a-92c8-4674-bf68-6793969a23d0" Value="Game.SubsystemBlocksTexture" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Drawing" Description="Calls Draw() on IDrawables, stores view position, orientation and projection parameters" Guid="9d9f5cfd-17e8-461b-91aa-78bf6fe0cfde" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="5e2f0374-15f7-48bf-926b-a59c3932df4c" Value="Game.SubsystemDrawing" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Particles" Description="Creates, draws and updates particle systems" Guid="f3929cef-b001-4354-8dbb-8d293ac81c8f" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="43248114-53fc-4c9f-be35-ef145940c06c" Value="Game.SubsystemParticles" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="Shadows" Description="Renders shadows of objects" Guid="f9bc658e-d0cc-4b74-8a20-b8f1c244de44" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="ab1b3c22-b3b7-48a2-8a2a-90ee4086793b" Value="Game.SubsystemShadows" Type="string" />
+        </SubsystemTemplate>
+      </Folder>
+      <Folder Name="Audio" Guid="a7796e6d-2af2-4fb5-ae6c-314dc43a91ff">
+        <SubsystemTemplate Name="Audio" Description="Plays audio and manages audio congestion" Guid="1a7dc615-f95f-46b1-916e-4a05d502527d" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="1d287846-45b2-4aa3-9c02-ee519a9310ed" Value="Game.SubsystemAudio" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="AmbientSounds" Description="Plays ambient audio" Guid="45d23322-efe4-4c7a-8e89-05d270ecf5ba" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <Parameter Name="Class" Guid="c579d8b3-ccef-4309-9e1f-27e039e8f1aa" Value="Game.SubsystemAmbientSounds" Type="string" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="SoundMaterials" Description="Plays sounds based on material" Guid="5f06f071-e061-4554-a0ee-851c7cfb84dd" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+          <ParameterSet Name="FootstepSounds" Description="Sound folders to play when creature is walking on different surface types" Guid="4215c3ba-ec1c-469d-9c46-43d12da35b42">
+            <Parameter Name="MetalLadder" Guid="10ad6326-5b2f-4e4f-80e7-22ef914c992a" Value="Audio/Footsteps/MetalLadder" Type="string" />
+            <Parameter Name="WoodenLadder" Guid="58b0507d-f6f4-420f-a8fb-60ec0723bdd4" Value="Audio/Footsteps/WoodenLadder" Type="string" />
+            <Parameter Name="Soft" Guid="6c26e558-e21d-4d4a-9e8e-ee23d0d4dcb1" Value="Audio/Footsteps/Soft" Type="string" />
+            <Parameter Name="Snow" Guid="6e09e527-ad8d-439f-baea-a41301be17e6" Value="Audio/Footsteps/Snow" Type="string" />
+            <Parameter Name="Metal" Guid="743273e2-3551-4804-b4d8-4b0dcd67203f" Value="Audio/Footsteps/Metal" Type="string" />
+            <Parameter Name="Leaves" Guid="8c93f413-9343-430c-a975-6d4ffea58ac5" Value="Audio/Footsteps/Plant" Type="string" />
+            <Parameter Name="Wood" Guid="957fa996-d59c-4ed8-a4ea-9899fae0e9fa" Value="Audio/Footsteps/Wood" Type="string" />
+            <Parameter Name="Water" Guid="a45fbe96-1a94-4c77-bcdd-6fc0731a8568" Value="Audio/Footsteps/Water" Type="string" />
+            <Parameter Name="Squishy" Guid="c0714807-e30a-4bfd-84d9-d568ee21cd01" Value="Audio/Footsteps/Squishy" Type="string" />
+            <Parameter Name="Sand" Guid="c98d4199-8efe-48e2-8f0a-7d41ff4ccd7a" Value="Audio/Footsteps/Sand" Type="string" />
+            <Parameter Name="Plant" Guid="cedc6cce-c167-47e9-82ff-8c55afb3b3e8" Value="Audio/Footsteps/Dirt" Type="string" />
+            <Parameter Name="Glass" Guid="d3387cf6-9bec-4bfe-a430-5da3c133ce6a" Value="Audio/Footsteps/Stone" Type="string" />
+            <Parameter Name="Stone" Guid="ef374db8-4623-462a-be29-1311b7756618" Value="Audio/Footsteps/Stone" Type="string" />
+            <Parameter Name="Dirt" Guid="f38d3845-62af-4ca7-9a59-c832a43a429b" Value="Audio/Footsteps/Dirt" Type="string" />
+          </ParameterSet>
+          <ParameterSet Name="ImpactSounds" Guid="4b685282-ddf5-472b-9499-89398a9afe65">
+            <Parameter Name="Sand" Guid="0e27eeaf-7fd4-485a-93a8-19609c48f029" Value="Audio/Impacts/Dirt" Type="string" />
+            <Parameter Name="Leaves" Guid="0f25fd81-23bd-424e-814e-13fb2e4cc636" Value="Audio/Impacts/Plant" Type="string" />
+            <Parameter Name="Soft" Guid="21c7a45c-9e98-441d-b02f-d6023a4bc169" Value="Audio/Impacts/Soft" Type="string" />
+            <Parameter Name="Plant" Guid="2ef04fca-2d5b-4c15-921f-7f653e6d1c07" Value="Audio/Impacts/Plant" Type="string" />
+            <Parameter Name="Wood" Guid="4f0a0039-08d1-4cb1-8196-5e6856657528" Value="Audio/Impacts/Wood" Type="string" />
+            <Parameter Name="Dirt" Guid="880e5fec-2959-4014-b558-82a98085d94e" Value="Audio/Impacts/Dirt" Type="string" />
+            <Parameter Name="Snow" Guid="9b4bba2b-7223-4f04-8c05-1c942b9c22d0" Value="Audio/Impacts/Dirt" Type="string" />
+            <Parameter Name="Stone" Guid="b7a6b051-02d8-4b37-9875-ab0ae1036c4d" Value="Audio/Impacts/Stone" Type="string" />
+            <Parameter Name="Glass" Guid="ba3d3c40-3fa5-4cb9-8562-bd47422bf32a" Value="Audio/Impacts/Glass" Type="string" />
+            <Parameter Name="Metal" Guid="c9de0a95-266f-407c-af9c-2421e4ac38d5" Value="Audio/Impacts/Metal" Type="string" />
+          </ParameterSet>
+          <Parameter Name="Class" Guid="e797b244-0780-4532-93aa-cc26c75fe3eb" Value="Game.SubsystemSoundMaterials" Type="string" />
+        </SubsystemTemplate>
+      </Folder>
+      <Folder Name="Abstract" Guid="e6fcac21-922d-4234-97c0-fe6feb5a0697">
+        <SubsystemTemplate Name="EditableItemBlockBehavior" Guid="aea46453-65b5-463a-9e0b-45f80bc41285" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745">
+          <ParameterSet Name="Items" Description="Contains memory banks associated with items" Guid="b04ad8b3-485d-445c-b02c-ca516d48241f" />
+          <ParameterSet Name="Blocks" Description="Contains memory banks associated with blocks" Guid="b1936acd-e9cf-42ec-ba48-2640daf1db47" />
+        </SubsystemTemplate>
+        <SubsystemTemplate Name="FluidBlockBehavior" Guid="f84d81fb-ee41-4908-b935-abce190ed017" InheritanceParent="fefb9590-4972-4893-b02a-76063611b745" />
+        <SubsystemTemplate Name="BlockBehavior" Guid="fefb9590-4972-4893-b02a-76063611b745" InheritanceParent="a3914c13-7801-46a6-b23a-9e2b36e9defb" />
+      </Folder>
+    </Folder>
+    <Folder Name="Projects" Guid="aec7b5f9-de96-4ef0-8b6c-4a9e3b021ddf">
+      <ProjectTemplate Name="GameProject" Guid="9e9a67f8-79df-4d05-8cfa-61bd8095661e" InheritanceParent="85023bf8-1c90-4dd1-9442-e6c13691d078" />
+    </Folder>
+    <Folder Name="Abstract" Guid="c6ba6a30-5042-4d3d-9bea-199cd4acc3fa">
+      <ProjectTemplate Name="Project" Guid="85023bf8-1c90-4dd1-9442-e6c13691d078">
+        <MemberSubsystemTemplate Name="BottomSuckerBlockBehavior" Guid="4fc10464-3979-4073-bc41-9f5afa10850d" InheritanceParent="7f3ab790-e878-4c17-a092-63e5eda27c7b" />
+        <MemberSubsystemTemplate Name="Terrain" Guid="6097d356-4090-4216-b085-c020650fe185" InheritanceParent="99ba8fcf-22cd-4adc-97ab-cb7b326ec037" />
+        <MemberSubsystemTemplate Name="GameInfo" Guid="adbbb66b-ea04-4399-b20c-6175b2eac060" InheritanceParent="af753bf7-a952-4222-8507-4289c3b7670b" />
+      </ProjectTemplate>
+      <SubsystemTemplate Name="Subsystem" Guid="a3914c13-7801-46a6-b23a-9e2b36e9defb">
+        <Parameter Name="IsOptional" Description="If true, subsystem type does not have to be present when creating project" Guid="3494e306-ec62-44ee-97e7-6a2937183891" Value="False" Type="bool" />
+        <Parameter Name="Class" Description="Name of .NET class used to create subsystem" Guid="708ed107-7848-41bc-a7a7-97b1e6684207" Value="" Type="string" />
+        <Parameter Name="Dependencies" Description="Names of subsystems which have to be loaded before this subsystem, comma separated" Guid="d89cc06f-973a-423f-af9f-dc590c8d13a5" Value="" Type="string" />
+      </SubsystemTemplate>
+      <ComponentTemplate Name="Component" Guid="b05700ed-7e4e-4679-98f5-b597f421496b">
+        <Parameter Name="LoadOrder" Description="Components with lower load order are loaded before components with higher load order" Guid="159a738a-dd51-43ae-b3df-16ebdcab85d1" Value="0" Type="int" />
+        <Parameter Name="IsOptional" Description="If true, component type does not have to be present in code when creating entity" Guid="9444b77f-0c70-4750-a17b-ed0407d48295" Value="False" Type="bool" />
+        <Parameter Name="Class" Description="Name of .NET class used to create component" Guid="9bed65ad-a455-4e11-af6d-375175f91144" Value="" Type="string" />
+      </ComponentTemplate>
+    </Folder>
+  </DatabaseObjects>
+</Database>
