@@ -235,7 +235,7 @@ namespace SurvivalcraftTerrainScanner {
             int minTargetBlockSum = AnsiConsole.Prompt(
                 new TextPrompt<int>("请输入扫描结果最小总方块数：[grey50]（>= 0）[/]")
                     .Validate(num => num >= 0 ? ValidationResult.Success() : ValidationResult.Error("请输入有效的数字"))
-                    .DefaultValue(2000)
+                    .DefaultValue(1800)
             );
             int maxThreadsCount = Math.Max(1, Environment.ProcessorCount - 1);
             int threadsCount = AnsiConsole.Prompt(
@@ -322,7 +322,7 @@ namespace SurvivalcraftTerrainScanner {
                 bool flag = false;
                 while (resultQueue.TryDequeue(out ScanResult result)) {
                     progressBarReporter.ReportValue(0, ++scannedCount);
-                    Console.Title = $"{scannedCount * 100 / worldCount:F1}% ({scannedCount}/{worldCount}) 生成并扫描世界中";
+                    Console.Title = $"{scannedCount * 100f / worldCount:F1}% ({scannedCount}/{worldCount}) 生成并扫描世界中";
                     if (result == null) {
                         continue;
                     }
@@ -350,7 +350,7 @@ namespace SurvivalcraftTerrainScanner {
                 if (flag) {
                     writer.Flush();
                 }
-                Task.Delay(300).Wait();
+                Task.Delay(1000).Wait();
             }
             writer.Flush();
             writer.Close();

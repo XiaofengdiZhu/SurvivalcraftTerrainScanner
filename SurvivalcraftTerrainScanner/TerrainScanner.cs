@@ -132,17 +132,28 @@ namespace SurvivalcraftTerrainScanner {
                             && Vector3.DistanceSquared(neighbor, startVector3) > rangeSquared) {
                             continue;
                         }
+                        // 1. 凹角 (Concave) - 墙角拐上去
                         Point3 diagonal = neighbor + direction;
-                        // 1. 凹角 (Concave/Inner Corner)
-                        // 如果“前上方”（对角线位置）有方块，说明墙角拐上去了
-                        if (IsValidNotAir(diagonal)) {
-                            // 新的表面在 diagonal 上，法线指向当前行进方向的反方向
-                            queue.Enqueue(new CellFace(diagonal.X, diagonal.Y, diagonal.Z, CellFace.OppositeFace(tangent)));
+                        if (!m_terrain.IsCellValid(diagonal)) {
                             continue;
                         }
-                        if (!m_terrain.IsCellValid(neighbor.X, neighbor.Y, neighbor.Z)) {
+                        TerrainChunk diagonalChunk = m_terrain.GetChunkAtCell(diagonal.X, diagonal.Z);
+                        if (diagonalChunk == null
+                            || diagonalChunk.ThreadState < TerrainChunkState.InvalidLight) {
                             continue;
                         }
+                        int diagonalContent = diagonalChunk.GetCellContentsFast(diagonal.X & 15, diagonal.Y, diagonal.Z & 15);
+                        if (diagonalContent != 0) {
+                            // 检查对角块是否是个有效的落脚点 (其实 IsValidNotAir 已经检查了一部分)
+                            // 这里的面是 OpposideFace(tangent)
+                            queue.Enqueue(new CellFace(diagonal, CellFace.OppositeFace(tangent)));
+                            continue;
+                        }
+                        // 实际不需要，因为对角无效时邻居肯定也无效
+                        // 检查邻居本身是否越界或未加载
+                        /*if (!m_terrain.IsCellValid(neighbor)) {
+                            continue;
+                        }*/
                         TerrainChunk neighborChunk = m_terrain.GetChunkAtCell(neighbor.X, neighbor.Z);
                         if (neighborChunk == null
                             || neighborChunk.ThreadState < TerrainChunkState.InvalidLight) {
@@ -246,15 +257,28 @@ namespace SurvivalcraftTerrainScanner {
                         && Vector3.DistanceSquared(neighbor, startVector3) > rangeSquared) {
                         continue;
                     }
+                    // 1. 凹角 (Concave) - 墙角拐上去
                     Point3 diagonal = neighbor + direction;
-                    // 1. 凹角
-                    if (IsValidNotAir(diagonal)) {
-                        queue.Enqueue(new CellFace(diagonal.X, diagonal.Y, diagonal.Z, CellFace.OppositeFace(tangent)));
+                    if (!m_terrain.IsCellValid(diagonal)) {
                         continue;
                     }
-                    if (!m_terrain.IsCellValid(neighbor.X, neighbor.Y, neighbor.Z)) {
+                    TerrainChunk diagonalChunk = m_terrain.GetChunkAtCell(diagonal.X, diagonal.Z);
+                    if (diagonalChunk == null
+                        || diagonalChunk.ThreadState < TerrainChunkState.InvalidLight) {
                         continue;
                     }
+                    int diagonalContent = diagonalChunk.GetCellContentsFast(diagonal.X & 15, diagonal.Y, diagonal.Z & 15);
+                    if (diagonalContent != 0) {
+                        // 检查对角块是否是个有效的落脚点 (其实 IsValidNotAir 已经检查了一部分)
+                        // 这里的面是 OpposideFace(tangent)
+                        queue.Enqueue(new CellFace(diagonal, CellFace.OppositeFace(tangent)));
+                        continue;
+                    }
+                    //实际不需要，因为对角无效时邻居肯定也无效
+                    // 检查邻居本身是否越界或未加载
+                    /*if (!m_terrain.IsCellValid(neighbor)) {
+                        continue;
+                    }*/
                     TerrainChunk neighborChunk = m_terrain.GetChunkAtCell(neighbor.X, neighbor.Z);
                     if (neighborChunk == null
                         || neighborChunk.ThreadState < TerrainChunkState.InvalidLight) {
